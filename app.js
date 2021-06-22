@@ -17,7 +17,7 @@ monggose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .then((result) => app.listen(3001))
+  .then((result) => app.listen(3000))
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
