@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const port = process.env.PORT || 3000;
 const dbURI = process.env.DB_URI_SECRET;
 
 monggose
@@ -17,7 +18,11 @@ monggose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
-  .then((result) => app.listen(3000))
+  .then(() =>
+    app.listen(port, () =>
+      console.log(`Login-server listening on http://localhost:${port}/`)
+    )
+  )
   .catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
