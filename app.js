@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const monggose = require("mongoose");
 const cors = require("cors");
@@ -8,8 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const dbURI =
-  "mongodb://dannygg:ggwp123@nodeapp-shard-00-00.la8gg.mongodb.net:27017,nodeapp-shard-00-01.la8gg.mongodb.net:27017,nodeapp-shard-00-02.la8gg.mongodb.net:27017/node-auth?ssl=true&replicaSet=atlas-sdo70z-shard-0&authSource=admin&retryWrites=true&w=majority";
+const dbURI = process.env.DB_URI_SECRET;
 
 monggose
   .connect(dbURI, {
